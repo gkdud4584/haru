@@ -2,7 +2,10 @@ import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
+
 function Navbar() {
+
+
     const [click, setClick] = useState(false);
 
 
@@ -43,8 +46,10 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='nav-item nav-space'>
-                        <Link to='/login' className='nav-links' onClick = {closeMobileMenu}>
-                            Login
+                        {/* <Link to='/login' className='nav-links' onClick = {closeMobileMenu}>
+                        </Link> */}
+                        <Link to="/login" className='nav-links' onClick = {closeMobileMenu}>
+                          Login
                         </Link>
                     </li>
                     
