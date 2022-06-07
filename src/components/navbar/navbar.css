@@ -86,6 +86,10 @@
     position: relative;
   }
 
+  .nav-space {
+    margin: 0;
+  }
+
   .nav-menu {
     display: flex;
     flex-direction: column;
