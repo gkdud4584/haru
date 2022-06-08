@@ -1,12 +1,12 @@
 import React from 'react'
 import '../App.css';
-import Card from '../components/card/Carditem';
-const home = () => {
+import MarketCard from '../components/card/MarketCard';
+const Market = () => {
   return (
     <>
-        <Card />
+        <MarketCard />
     </>
   )
 }
 
-export default home
+export default Market

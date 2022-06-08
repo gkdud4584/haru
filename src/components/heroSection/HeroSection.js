@@ -15,7 +15,7 @@ function HeroSection() {
             <p>어쩌구저쩌구?</p>
             <div className="hero-btns">
                  <Button className = 'btns' buttonStyle = 'btn--primary' 
-                buttonSize = 'btn--large'>Sign Up</Button>
+                buttonSize = 'btn--large'>Tutorial</Button>
             </div>
                
         </div>

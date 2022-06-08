@@ -1,8 +1,8 @@
 import React from 'react'
-import CardItem from './Carditem';
+import CardItem from './MarketCardItem';
 import  './Card.css';
 
-function Cards() {
+function MarketCards() {
     return (
         <div className='cards'>                           
             <h1 className='title'>DAMITO가 바꿀 데이터</h1>
@@ -45,4 +45,4 @@ function Cards() {
     );
 }
 
-export default Cards;
+export default MarketCards;

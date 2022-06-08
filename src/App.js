@@ -12,6 +12,7 @@ import Login from './pages/Login'
 import { signIn } from './jsonData/auth';
 import Profile from '../src/pages/Profile';
 import AuthRoute from '../src/pages/AuthRoute';
+import Tutorial from './pages/Tutorial';
 function App() {
   const [user, setUser] = useState(null);
   const authenticated = user != null;
@@ -39,6 +40,7 @@ function App() {
             path="/profile"
             render={props => <Profile user={user} {...props} />}
           />
+          <Route path='/tutorial' component={Tutorial}/>
       </Switch>
     </Router>
     </>

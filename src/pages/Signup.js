@@ -25,7 +25,7 @@ export default function Signup() {
       <form className="signup-form" onSubmit={submitHandler}>
         <div className="field">
           <label className="field-label" id="fullName">
-            Full Name
+            ID
           </label>
           <input
             type="text"
