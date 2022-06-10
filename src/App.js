@@ -7,12 +7,14 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Service from './pages/Service'
 import Market from './pages/Market'
-import Signup from './pages/Signup';
 import Login from './pages/Login'
 import { signIn } from './jsonData/auth';
 import Profile from '../src/pages/Profile';
 import AuthRoute from '../src/pages/AuthRoute';
 import Tutorial from './pages/Tutorial';
+import Register from './pages/Register';
+import LoginPost from './pages/LoginPost';
+
 function App() {
   const [user, setUser] = useState(null);
   const authenticated = user != null;
@@ -20,7 +22,7 @@ function App() {
   const login = ({ email, password }) => setUser(signIn({ email, password }));
 
   return (
-    <>
+    <div>
 
     <Router>
       <Navbar />
@@ -28,7 +30,9 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/mypage' component={Service} />
         <Route path='/market' component={Market} />
-        <Route path='/signup' component={Signup} />
+
+        <Route path='/register' component={Register} />
+        <Route path='/loginpost' component={LoginPost} />
         <Route
             path="/login"
             render={props => (
@@ -43,7 +47,7 @@ function App() {
           <Route path='/tutorial' component={Tutorial}/>
       </Switch>
     </Router>
-    </>
+    </div>
   );
 }
 

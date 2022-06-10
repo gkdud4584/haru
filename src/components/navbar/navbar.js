@@ -41,14 +41,14 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='nav-item nav-space'>
-                        <Link to='/signup' className='nav-links' onClick = {closeMobileMenu}>
+                        <Link to='/register' className='nav-links' onClick = {closeMobileMenu}>
                             Sign Up
                         </Link>
                     </li>
                     <li className='nav-item nav-space'>
                         {/* <Link to='/login' className='nav-links' onClick = {closeMobileMenu}>
                         </Link> */}
-                        <Link to="/login" className='nav-links' onClick = {closeMobileMenu}>
+                        <Link to="/loginpost" className='nav-links' onClick = {closeMobileMenu}>
                           Login
                         </Link>
                     </li>
