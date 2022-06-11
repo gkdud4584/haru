@@ -3,7 +3,16 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import './Register.css'
+import sha256 from "crypto-js/sha256";
 
+async function hashString(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+  return hashHex;
+}
 // 유효성 검사 
 const USER_REGEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -49,7 +58,14 @@ const Register = () => {
         // if button enabled with JS hack
         const v1 = USER_REGEX.test(email);
         const v2 = PWD_REGEX.test(password);
-        const v = email + password; 
+        const v = password + email;
+      
+        hashString(v).then(h => {
+          console.log(h);
+          console.log(sha256(v).toString());
+        });
+        const user = sha256(v).toString();
+
         if (!v1 || !v2) {
             setErrMsg("Invalid Entry");
             return;
@@ -58,7 +74,7 @@ const Register = () => {
         // post 보내기 
         try {
             const response = await axios.post('https://jsonplaceholder.typicode.com/users',
-                JSON.stringify({ email, password, v }),
+                JSON.stringify({ user }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -100,7 +116,7 @@ const Register = () => {
                     <h1>Register</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="Email">
-                            Email
+                            Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                         </label>
@@ -170,13 +186,7 @@ const Register = () => {
 
                         <button disabled={!validEmail || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
-                    <p>
-                        Already registered?<br />
-                        <span className="line">
-                            {/*put router link here*/}
-                            <a href="/login">Sign In</a>
-                        </span>
-                    </p>
+
                 </section>
             )}
         </>

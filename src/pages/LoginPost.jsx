@@ -3,8 +3,16 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import './Register.css'
-// import crypto from 'crypto'
+import sha256 from "crypto-js/sha256";
 
+async function hashString(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+  return hashHex;
+}
 
 // 유효성 검사 
 const USER_REGEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -22,10 +30,6 @@ const LoginPost = () => {
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
 
-    const [matchPwd, setMatchPwd] = useState('');
-    const [validMatch, setValidMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
-
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -39,29 +43,24 @@ const LoginPost = () => {
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(password));
-        setValidMatch(password === matchPwd);
-    }, [password, matchPwd])
+    }, [password])
 
     useEffect(() => {
         setErrMsg('');
-    }, [email, password, matchPwd])
+    }, [email, password])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-  
-    //    const shasum = crypto.createHash('sha256');
-        // if button enabled with JS hack
-        // const crypto = require('crypto');
-        // const {createHmac} = await import('crypto');
         const v1 = USER_REGEX.test(email);
         const v2 = PWD_REGEX.test(password);
-        const userInfo = email + password;
-        // const hash = createHmac('sha256', userInfo)
-        // .update('i love')
-        // .digest('hex'); 
-    //    const result = shasum.update(userInfo);
+        const v = password + email;
 
+        hashString(v).then(h => {
+          console.log(h);
+          console.log(sha256(v).toString());
+        });
+        const user = sha256(v).toString();
         if (!v1 || !v2) {
             setErrMsg("Invalid Entry");
             return;
@@ -70,7 +69,7 @@ const LoginPost = () => {
         // post 보내기 
         try {
             const response = await axios.post('https://jsonplaceholder.typicode.com/users',
-                JSON.stringify({ userInfo }),
+                JSON.stringify({ user }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -84,7 +83,6 @@ const LoginPost = () => {
             //need value attrib on inputs for this
             setEmail('');
             setPassword('');
-            setMatchPwd('');
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -109,10 +107,10 @@ const LoginPost = () => {
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>LoginPost</h1>
+                    <h1>Login</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="Email">
-                            Email
+                            Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                         </label>
@@ -158,31 +156,10 @@ const LoginPost = () => {
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
 
-
-                        <label htmlFor="confirm_pwd">
-                            Confirm Password:
-                            <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="confirm_pwd"
-                            onChange={(e) => setMatchPwd(e.target.value)}
-                            value={matchPwd}
-                            required
-                            aria-invalid={validMatch ? "false" : "true"}
-                            aria-describedby="confirmnote"
-                            onFocus={() => setMatchFocus(true)}
-                            onBlur={() => setMatchFocus(false)}
-                        />
-                        <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Must match the first password input field.
-                        </p>
-
-                        <button disabled={!validEmail || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <button disabled={!validEmail || !validPwd ? true : false}>Login</button>
                     </form>
                     <p>
+
                         Already registered?<br />
                         <span className="line">
                             {/*put router link here*/}
