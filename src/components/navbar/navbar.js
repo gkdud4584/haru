@@ -75,13 +75,14 @@ function Navbar() {
                         <NavLink exact activeClassName='is-active' onClick={toggleClass} to={`/`}> Home </NavLink> 
                     </li>
                     <li className="menu-item " ><NavLink onClick={toggleClass} activeClassName='is-active' to={`/market`}> Market </NavLink> </li>
-                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Service <FiChevronDown /> </Link>
+                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="/dashboard/add"> Service <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
                             <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/fqa`}> 공지사항 </NavLink> </li>
                             <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/tutorial`}> 튜토리얼 </NavLink> </li>
+                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/tutorial`}> 튜토리얼 </NavLink> </li>
                         </ul>
                     </li>
-                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> 고객지원 <FiChevronDown /> </Link>
+                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Center <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
                             <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/fqa`}> FQA </NavLink> </li>
                             <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/onequestion`}> 1:1문의 </NavLink> </li>
@@ -90,12 +91,9 @@ function Navbar() {
                     <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Select <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
                             <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/homesub`}> User </NavLink> </li>
-                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/data`}> Data </NavLink> </li>
+                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/datainfo`}> Data </NavLink> </li>
                         </ul>
                     </li>                    
-                    <li  className="menu-item" >
-                        <NavLink exact activeClassName='is-active' onClick={toggleClass} to={`/mypage`}> Mypage </NavLink> 
-                    </li>
                     <li  className="menu-item" >
                         <NavLink exact activeClassName='is-active' onClick={toggleClass} to={`/register`}> SignIn </NavLink> 
                     </li>

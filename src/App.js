@@ -24,7 +24,9 @@ import NotFound from './pages/NotFound';
 import AddUser from './components/users/AddUser';
 import EditUser from './components/users/EditUser';
 import User from './components/users/User';
-
+import DataInfo from './pages/DataInfo';
+import AddData from './components/data/AddData';
+import Data from './components/data/Data'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,6 +68,9 @@ function App() {
           <Route exact path="/users/edit/:id" component={EditUser} />
           <Route exact path="/users/:id" component={User} />
           <Route exact path="/homesub" component={HomeSub} />
+          <Route exact path="/datainfo" component={DataInfo} />
+          <Route exact path="/dashboard/add" component={AddData} />
+          <Route exact path="/dashboard/:id" component={Data} />
 
           <Route component={NotFound} />
       </Switch>

@@ -2,7 +2,16 @@ import {useState} from 'react';
 import './write.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import axios from 'axios';
 
+async function hashString(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+  return hashHex;
+}
 
 function Write() {
   const [write, setWrite] = useState({
@@ -21,29 +30,19 @@ function Write() {
     console.log(write);
   };  
 
-  // const submitReview = ()=>{
-  //   Axios.post('', {
-  //     title: write.title,
-  //     content: write.content
-  //   }).then(()=>{
-  //     alert('등록 완료!');
-  //   })
-  // };
+  const submitReview = ()=>{
+    axios.post('http://localhost:3003/dashboard', {
+      title: write.title,
+      content: write.content
+    }).then(()=>{
+      alert('등록 완료!');
+    })
+  };
 
   return (
 
     <div className="App">
-      <h1>게시글 작성</h1>
-      <div className='movie-container'>
-      {view.map(element => 
-        <div key={element}>
-          <h2>{element.title}</h2>
-          <div>
-            {element.content}
-          </div>
-        </div>)}
-      </div>
-
+      <h1>Write</h1>
       <div className='form-wrapper'>
         <input className="title-input" type='text' name='title' onChange={getValue} placeholder='제목' />
         <CKEditor name ="content"
@@ -63,18 +62,10 @@ function Write() {
               content: data
             })
           }}
-          onBlur={(event, editor) => {
-            console.log('Blur.', editor);
-          }}
-          onFocus={(event, editor) => {
-            console.log('Focus.', editor);
-          }}
         />
       </div>
       <button className="submit-button"
-      onClick={() => {
-        setView(view.concat({...write}));
-      }}
+      onClick={submitReview}
       >입력</button>
     </div>
   );
