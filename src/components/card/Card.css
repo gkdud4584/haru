@@ -26,6 +26,15 @@ h1 {
   margin: 0 auto;
 }
 
+.cards_container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  max-width: 100vh;
+  width: 90%;
+  margin: 0 auto;
+}
+
 .cards__wrapper {
   position: relative;
   margin: 50px 0 45px;
@@ -40,6 +49,14 @@ h1 {
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
+}
+
+.cards_item {
+  display: flex;
+  flex: 1;
+  margin: 0 1rem;
+  border-radius: 10px;
+
 }
 
 .cards__item__link {

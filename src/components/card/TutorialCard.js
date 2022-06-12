@@ -6,50 +6,37 @@ function TutorialCards() {
     return (
         <div className='cards'>                           
           <h1>DAMITO 튜토리얼 페이지</h1>
+          <div className="cards_container">
+                <div>
             <ul className='cards__items'>
-                        <CardItem
-                        src='https://github.com/minislively/opensourceproject/blob/master/src/images/img1.png'
-                        text='Images'
+                    <CardItem
+                        src='https://github.com/minislively/opensourceproject/blob/master/src/images/img1.png?raw=true'
+                        text='회원가입 페이지'
                         label='Mystery'
                         alt="page1"
-
+                        path='/register'
                         />
                         <CardItem
-                        src='https://cdn.pixabay.com/photo/2014/04/14/20/11/pink-324175_960_720.jpg'
-                        text='Experience Football on Top of the Himilayan Mountains'
+                        src='https://github.com/minislively/opensourceproject/blob/master/src/images/img2.png?raw=true'
+                        text='로그인 페이지'
                         label='Adventure'
                         alt="page2"
-
+                        path='/login'
                         />
-                        <CardItem
-                        src='https://cdn.pixabay.com/photo/2014/09/11/18/23/tower-bridge-441853_960_720.jpg'
-                        text='Ride through the Sahara Desert on a guided camel tour'
-                        label='Adrenaline'
-                        alt="page3"
-                        />   
+                        
                     </ul>
                     <ul className='cards__items'>
+  
                         <CardItem
-                        src='https://cdn.pixabay.com/photo/2015/07/05/10/18/tree-832079_960_720.jpg'
-                        text='Images'
+                        src='https://github.com/minislively/opensourceproject/blob/master/src/images/img4.png?raw=true'
+                        text='데이터 저장하기'
                         label='Mystery'
-                        alt="page4"
-
+                        alt="page3"
+                        path='/dashboard/add'
                         />
-                        <CardItem
-                        src='https://cdn.pixabay.com/photo/2014/04/14/20/11/pink-324175_960_720.jpg'
-                        text='Experience Football on Top of the Himilayan Mountains'
-                        label='Adventure'
-                        alt="page5"
-
-                        />
-                        <CardItem
-                        src='https://cdn.pixabay.com/photo/2014/09/11/18/23/tower-bridge-441853_960_720.jpg'
-                        text='Ride through the Sahara Desert on a guided camel tour'
-                        label='Adrenaline'
-                        alt="page6"
-                        />   
-                    </ul>                                    
+                    </ul>
+                    </div>
+                    </div>                                    
             </div>
     );
 }

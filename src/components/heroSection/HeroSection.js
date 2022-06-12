@@ -11,8 +11,8 @@ function HeroSection() {
             <video autoPlay loop muted>
               <source src={data} type="video/mp4"></source>
             </video>
-            <h1>어쩌구저쩌구</h1>
-            <p>어쩌구저쩌구?</p>
+            <h1>DAMITO MAKES PERFECT.</h1>
+            <p>안정적인 DAMITO로 관리합시다.</p>
             <div className="hero-btns">
                  <Button className = 'btns' buttonStyle = 'btn--primary' 
                 buttonSize = 'btn--large'>Tutorial</Button>
