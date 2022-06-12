@@ -1,4 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
+import sha256 from "crypto-js/sha256";
+
+async function hashString(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+  return hashHex;
+}
+
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
@@ -6,6 +19,33 @@ export default function Basket(props) {
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  const currentTimeInMilliseconds=Date.now();
+  let history = useHistory();
+  const [data, setData] = useState({
+    title: "마켓 거래 완료",
+    token: "",
+    content: "마켓에서 거래가 완료되었습니다."
+  });
+
+
+
+
+  const { title, content } = data;
+
+  const onSubmit = async() => {
+
+    const v = currentTimeInMilliseconds
+    hashString(v).then(h => {
+      console.log(h);
+      console.log(sha256(v).toString());
+    });
+    const token = sha256(v).toString();
+    await axios.post("/dashboard", {
+      title, content, token
+    });
+    history.push("/");
+  }
+  
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
@@ -57,7 +97,7 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-              <button onClick={() => alert('Implement Checkout!')}>
+              <button onClick={onSubmit}>
                 Checkout
               </button>
             </div>
@@ -66,4 +106,5 @@ export default function Basket(props) {
       </div>
     </aside>
   );
+  
 }

@@ -1,4 +1,4 @@
-import Header from './Header';
+
 import Main from './Main';
 import Basket from './Basket';
 import data from './MarketData';
@@ -34,8 +34,7 @@ function MarketCard() {
   };
   return (
     <div className="App">
-      <Header countCartItems={cartItems.length}></Header>
-      <div className="row">
+      <div className="row updown">
         <Main products={products} onAdd={onAdd}></Main>
         <Basket
           cartItems={cartItems}

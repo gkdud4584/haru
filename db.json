@@ -20,6 +20,27 @@
       "email": "ansdkf@naver.com",
       "token": "asndfkdslafn123125nskzndfksnb",
       "id": 3
+    },
+    {
+      "name": "김무무",
+      "nickname": "누누",
+      "email": "sbnsdn@naver.com",
+      "token": "50e77f7f1d83965ecf531894329b85396e2c33e74fa0f786796072a769397c76",
+      "id": 4
+    },
+    {
+      "name": "무무",
+      "nickname": "무무",
+      "email": "aaa123@naver.com",
+      "token": "90bd9dc12de88bdf47a9cea6cda0da4ce03fa6ddb49c23f6d8c0489e85e114f7",
+      "id": 5
+    },
+    {
+      "name": "박나나",
+      "nickname": "나나",
+      "email": "amsi111@naver.com",
+      "token": "bca65d32b1c2cc266893a9d0c34203988b329b70c2a546804d52a91fc2262aec",
+      "id": 6
     }
   ],
   "post": [
@@ -29,6 +50,12 @@
       "content": "첫 번째 공지사항입니다.",
       "author": "관리자",
       "day": "2022.06.12"
+    },
+    {
+      "title": "그냥그냥",
+      "content": "<p>ㅎㅎ</p>",
+      "author": "",
+      "id": 2
     }
   ],
   "dashboard": [
@@ -43,6 +70,38 @@
       "content": "<p>sdfsdf</p>",
       "token": "21e62532d429d0f0a31b0cad9f74f59f9feeea8d6960da4a9e28ac5d312e7c55",
       "id": 2
+    },
+    {
+      "title": "안녕하세요",
+      "content": "<p>어쩌구저쩌구</p>",
+      "token": "c32ec5c9a2cde8c4915ddc63149d8fba6483d1435d605ff0fcca29f086d245d8",
+      "id": 3
+    },
+    {
+      "title": "마켓 거래 완료",
+      "content": "마켓에서 거래가 완료되었습니다.",
+      "token": "7d6f269328dd493e9357a9cd22156e77bab6c6e14f04a3a98ba2efae84325189",
+      "id": 5
+    },
+    {
+      "title": "마켓 거래 완료",
+      "content": "마켓에서 거래가 완료되었습니다.",
+      "token": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "id": 18
+    },
+    {
+      "title": "아무것도 모르겠다",
+      "content": "<p>아무것도 모르겠군</p>",
+      "token": "8bb69aff7878e5d5ed9420a49713eeff0127ff095386c014a29607f30ca48186",
+      "id": 19
     }
-  ]
+  ],
+  "qna": {
+    "title": "ㄴㅇㄹㄴㅇㄹ",
+    "content": "ㄴㅇㄹㄴㅇㄹ",
+    "name": "김민설",
+    "email": "blessoms2017@gmail.com",
+    "phone": "01048234761",
+    "id": 1
+  }
 }

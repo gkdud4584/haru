@@ -27,6 +27,13 @@ import User from './components/users/User';
 import DataInfo from './pages/DataInfo';
 import AddData from './components/data/AddData';
 import Data from './components/data/Data'
+import AddNotice from './components/notice/AddNotice';
+import Notice from './components/notice/Notice';
+import NoticeB from './pages/Notice';
+import AddQNA from './components/qna/AddQNA';
+import QNA from './components/qna/QNA';
+import EditNotice from './components/notice/EditNotice';
+import Question from './pages/Question';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,11 +73,18 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/users/add" component={AddUser} />
           <Route exact path="/users/edit/:id" component={EditUser} />
+          <Route exact path="/post/edit/:id" component={EditNotice} />
           <Route exact path="/users/:id" component={User} />
           <Route exact path="/homesub" component={HomeSub} />
           <Route exact path="/datainfo" component={DataInfo} />
           <Route exact path="/dashboard/add" component={AddData} />
           <Route exact path="/dashboard/:id" component={Data} />
+          <Route exact path="/post/add" component={AddNotice} />
+          <Route exact path="/post/:id" component={Notice} />
+          <Route exact path="/post" component={NoticeB} />
+          <Route exact path="/qna/add" component={AddQNA} />
+          <Route exact path="/qna/:id" component={QNA} />
+          <Route exact path ='/qna/list' component={Question} />
 
           <Route component={NotFound} />
       </Switch>

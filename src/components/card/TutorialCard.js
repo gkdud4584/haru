@@ -8,7 +8,7 @@ function TutorialCards() {
           <h1>DAMITO 튜토리얼 페이지</h1>
             <ul className='cards__items'>
                         <CardItem
-                        src='https://cdn.pixabay.com/photo/2015/07/05/10/18/tree-832079_960_720.jpg'
+                        src='https://github.com/minislively/opensourceproject/blob/master/src/images/img1.png'
                         text='Images'
                         label='Mystery'
                         alt="page1"

@@ -13,6 +13,10 @@ const DataInfo = () => {
     const result = await axios.get("/dashboard");
     setUser(result.data.reverse());
   };
+  const deleteUser = async id => {
+    await axios.delete(`/dashboard/${id}`);
+    loadUsers();
+  };
 
   return (
     <div className="container">
@@ -34,7 +38,12 @@ const DataInfo = () => {
                   <Link class="btn btn-primary mr-2" to={`/dashboard/${data.id}`}>
                     View
                   </Link>
-
+                  <Link
+                    class="btn btn-danger"
+                    onClick={() => deleteUser(data.id)}
+                  >
+                    Delete
+                  </Link>
                 </td>
                 <td>{data.title}</td>
                 <td>{data.token}</td>

@@ -77,18 +77,18 @@ function Navbar() {
                     <li className="menu-item " ><NavLink onClick={toggleClass} activeClassName='is-active' to={`/market`}> Market </NavLink> </li>
                     <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="/dashboard/add"> Service <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
-                            <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/fqa`}> 공지사항 </NavLink> </li>
+                            <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/post`}> 공지사항 </NavLink> </li>
                             <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/tutorial`}> 튜토리얼 </NavLink> </li>
-                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/tutorial`}> 튜토리얼 </NavLink> </li>
+                        
                         </ul>
                     </li>
                     <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Center <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
                             <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/fqa`}> FQA </NavLink> </li>
-                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/onequestion`}> 1:1문의 </NavLink> </li>
+                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/qna/add`}> 1:1문의 </NavLink> </li>
                         </ul>
                     </li>
-                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Select <FiChevronDown /> </Link>
+                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Info <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
                             <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/homesub`}> User </NavLink> </li>
                             <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/datainfo`}> Data </NavLink> </li>
@@ -100,14 +100,14 @@ function Navbar() {
                     <li  className="menu-item" >
                         <NavLink exact activeClassName='is-active' onClick={toggleClass} to={`/loginpost`}> Login </NavLink> 
                     </li>
-                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> Select <FiChevronDown /> </Link>
+                    <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows" > <Link to="#"> manager <FiChevronDown /> </Link>
                         <ul className={boxClassSubMenu.join(' ')} > 
                             <li> <NavLink onClick={toggleClass} activeClassName='is-active'  to={`/users/add`}> Add User </NavLink> </li>
                             <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/post/add`}> Add 공지사항 </NavLink> </li>
-                            <li><NavLink onClick={toggleClass} activeClassName='is-active' to={`/onequestion/add`}> Add 1:1문의 </NavLink> </li>
+      
                         </ul>
                     </li>    
-                    <li className="menu-item " ><NavLink onClick={toggleClass} activeClassName='is-active' to={`/Contact`}> Contact </NavLink> </li>
+                    
                 </ul>
                 </nav>     
             </div>   
