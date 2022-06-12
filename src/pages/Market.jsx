@@ -6,10 +6,9 @@ import NoticeSub from './NoticeSub';
 const Market = () => {
   return (
     <>
+        <MarketCard />
         <NoticeSub />
         <Noticeboard />
-        <MarketCard />
-      
     </>
   )
 }

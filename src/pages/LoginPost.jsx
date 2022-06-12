@@ -194,7 +194,7 @@ function LoginPost () {
                         </span>
                     </p>
                 </section>
-            )}
+            )
         </>
     )
 }
