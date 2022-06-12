@@ -18,7 +18,7 @@ async function hashString(str) {
 const USER_REGEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const LoginPost = () => {
+function LoginPost () {
     const userRef = useRef();
     const errRef = useRef();
 
@@ -32,6 +32,9 @@ const LoginPost = () => {
 
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+
+    // const { userList } = useUserState();
+    // const dispatch = useUserDispatch()
 
     useEffect(() => {
         userRef.current.focus();
@@ -61,10 +64,13 @@ const LoginPost = () => {
           console.log(sha256(v).toString());
         });
         const user = sha256(v).toString();
+
+
         if (!v1 || !v2) {
             setErrMsg("Invalid Entry");
             return;
         }
+
         //console.log(userInfo);
         // post 보내기 
         try {
@@ -75,10 +81,37 @@ const LoginPost = () => {
                     withCredentials: true
                 }
             );
+
+            if ( localStorage.getItem('email') === email && localStorage.getItem('password')===password) { 
+              // <section>
+              //     <h1>로그인 성공! </h1>
+              //     <p>
+              //         <a href="/"><button>Login</button></a>
+              //     </p>
+              // </section>
+              document.location.href='/'
+              alert('정답')
+             } else {
+            alert('실패')
+             }
             console.log(response?.data);
             console.log(response?.accessToken);
             console.log(JSON.stringify(response))
-            setSuccess(true);
+            if (!localStorage.getItem('email')
+            || !localStorage.getItem('password')) {
+              alert('등록되지 않았습니다');
+              setSuccess(false);
+
+              return; 
+            }
+            else {
+              setSuccess(true);
+            }
+            // dispatch({
+            //   type: "LOGIN",
+            //   email: user,
+            // });
+
             //clear state and controlled inputs
             //need value attrib on inputs for this
             setEmail('');
@@ -97,14 +130,8 @@ const LoginPost = () => {
 
     return (
         <>
-            {success ? (
-                <section>
-                    <h1>로그인 성공! =</h1>
-                    <p>
-                        <a href="/login">Sign In</a>
-                    </p>
-                </section>
-            ) : (
+
+          (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Login</h1>

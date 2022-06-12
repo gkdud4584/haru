@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/navbar/navbar.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-
+import PrivateRoute from './pages/PrivateRoute'
 import Home from './pages/Home';
 import Service from './pages/Service'
 import Market from './pages/Market'
@@ -14,6 +14,8 @@ import AuthRoute from '../src/pages/AuthRoute';
 import Tutorial from './pages/Tutorial';
 import Register from './pages/Register';
 import LoginPost from './pages/LoginPost';
+import Mypage from './pages/Mypage'
+import Logout from './pages/Logout';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,12 +29,14 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact component={Home}   />
         <Route path='/mypage' component={Service} />
         <Route path='/market' component={Market} />
 
         <Route path='/register' component={Register} />
         <Route path='/loginpost' component={LoginPost} />
+        <PrivateRoute path='/mypage' component={Mypage} />
+        <PrivateRoute path='/logout' component={Logout} />
         <Route
             path="/login"
             render={props => (

@@ -40,18 +40,24 @@ function Navbar() {
                             Market
                         </Link>
                     </li>
-                    <li className='nav-item nav-space'>
-                        <Link to='/register' className='nav-links' onClick = {closeMobileMenu}>
-                            Sign Up
+    
+                    <li className='nav-item'>
+                        <Link to='/mypage' className='nav-links' onClick = {closeMobileMenu}>
+                            Mypage
                         </Link>
                     </li>
                     <li className='nav-item nav-space'>
                         {/* <Link to='/login' className='nav-links' onClick = {closeMobileMenu}>
                         </Link> */}
-                        <Link to="/loginpost" className='nav-links' onClick = {closeMobileMenu}>
-                          Login
+                        <Link to="/register" className='nav-links' onClick = {closeMobileMenu}>
+                          signIn 
                         </Link>
-                    </li>
+                    </li>       
+                    <li className='nav-item'>
+                        <Link to='/loginpost' className='nav-links' onClick = {closeMobileMenu}>
+                            Login
+                        </Link>
+                    </li>                    
                     
                     
                 </ul>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Register.css'
 import sha256 from "crypto-js/sha256";
 
+
 async function hashString(str) {
   const encoder = new TextEncoder();
   const data = encoder.encode(str);
@@ -17,7 +18,9 @@ async function hashString(str) {
 const USER_REGEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const Register = () => {
+
+function Register () {
+
     const userRef = useRef();
     const errRef = useRef();
 
@@ -35,6 +38,7 @@ const Register = () => {
 
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+    // const dispatch = useUserDispatch();
 
     useEffect(() => {
         userRef.current.focus();
@@ -80,6 +84,17 @@ const Register = () => {
                     withCredentials: true
                 }
             );
+            // dispatch({
+            //   type: "CREATE_USER",
+            //   user: {
+            //     email,
+            //     password,
+            //   },
+            // });
+            window.localStorage.setItem('email', email)
+            window.localStorage.setItem('password', password)
+            window.localStorage.setItem('user', user)
+
             console.log(response?.data);
             console.log(response?.accessToken);
             console.log(JSON.stringify(response))
@@ -105,9 +120,9 @@ const Register = () => {
         <>
             {success ? (
                 <section>
-                    <h1>로그인 성공! =</h1>
+                    <h1>로그인 성공!</h1>
                     <p>
-                        <a href="/login">Sign In</a>
+                        <a href="/loginpost">Sign In</a>
                     </p>
                 </section>
             ) : (
