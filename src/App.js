@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Navbar from './components/navbar/navbar.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 import PrivateRoute from './pages/PrivateRoute'
 import Home from './pages/Home';
@@ -16,6 +17,14 @@ import Register from './pages/Register';
 import LoginPost from './pages/LoginPost';
 import Mypage from './pages/Mypage'
 import Logout from './pages/Logout';
+import Contact from './pages/Contact';
+import About from './pages/About'
+import HomeSub from './pages/HomeSub';
+import NotFound from './pages/NotFound';
+import AddUser from './components/users/AddUser';
+import EditUser from './components/users/EditUser';
+import User from './components/users/User';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +37,7 @@ function App() {
 
     <Router>
       <Navbar />
+
       <Switch>
         <Route path='/' exact component={Home}   />
         <Route path='/mypage' component={Service} />
@@ -49,6 +59,15 @@ function App() {
             render={props => <Profile user={user} {...props} />}
           />
           <Route path='/tutorial' component={Tutorial}/>
+      
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/users/add" component={AddUser} />
+          <Route exact path="/users/edit/:id" component={EditUser} />
+          <Route exact path="/users/:id" component={User} />
+          <Route exact path="/homesub" component={HomeSub} />
+
+          <Route component={NotFound} />
       </Switch>
     </Router>
     </div>

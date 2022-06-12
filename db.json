@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "nickname": "Bret",
+      "email": "Sincere@april.biz",
+      "token": "f0478b1441b5509761fb56447e97c6f8bd2ac760c01fb0408c6b5c51830a5bd9"
+    },
+    {
+      "id": 2,
+      "name": "김민설",
+      "nickname": "민설",
+      "email": "blessoms2017@gmail.com",
+      "token": "cf6df401ace708235fe27c54e224762a3e2a63d6470fbb2a94517e6530f0d60e"
+    }
+  ],
+  "post": [
+    {
+      "id": 1,
+      "title": "처음 공지사항",
+      "content": "첫 번째 공지사항입니다.",
+      "author": "관리자",
+      "day": "2022.06.12"
+    }
+  ],
+  "dashboard": [
+    {
+      "title": "",
+      "token": "",
+      "content": ""
+    }
+  ]
+}

@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 .App {
   display: flex;
@@ -12,11 +8,12 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh; 
+  
   padding: 1rem 0.5rem;
-
 }
 
 section {
+    margin: auto;
     width: 100%;
     max-width: 420px;
     min-height: 400px;
@@ -24,10 +21,11 @@ section {
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+    padding-top: 10vh;
 }
 
 form {
+  
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -47,6 +45,7 @@ textarea {
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
+  border: 1px solid black;
 }
 
 label,
@@ -100,5 +99,7 @@ button {
 }
 
 .line {
+    margin-left: 5px;
+    background-color: rgb(17, 0, 255);
     display: inline-block;
 }

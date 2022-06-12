@@ -129,9 +129,7 @@ function LoginPost () {
     }
 
     return (
-        <>
-
-          (
+        <div>
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Login</h1>
@@ -179,23 +177,22 @@ function LoginPost () {
                         <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             8글자 이상 24글자 이하로 입력해주세요.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                          
                         </p>
 
                         <button disabled={!validEmail || !validPwd ? true : false}>Login</button>
                     </form>
                     <p>
 
-                        Already registered?<br />
+                        Already registered?
                         <span className="line">
                             {/*put router link here*/}
-                            <a href="/login">Sign In</a>
+                            <a className="line-a" href="/register">Sign In</a>
                         </span>
                     </p>
                 </section>
-            )
-        </>
+            
+        </div>
     )
 }
 

@@ -24,6 +24,9 @@ function Register () {
     const userRef = useRef();
     const errRef = useRef();
 
+    const [name, setName] = useState('');
+    const [nickname, setNickName] = useState('');
+
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
@@ -68,7 +71,7 @@ function Register () {
           console.log(h);
           console.log(sha256(v).toString());
         });
-        const user = sha256(v).toString();
+        const token = sha256(v).toString();
 
         if (!v1 || !v2) {
             setErrMsg("Invalid Entry");
@@ -77,8 +80,8 @@ function Register () {
         console.log(v);
         // post 보내기 
         try {
-            const response = await axios.post('https://jsonplaceholder.typicode.com/users',
-                JSON.stringify({ user }),
+            const response = await axios.post('/users',
+                JSON.stringify({ name, nickname, email, token }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -93,14 +96,15 @@ function Register () {
             // });
             window.localStorage.setItem('email', email)
             window.localStorage.setItem('password', password)
-            window.localStorage.setItem('user', user)
-
+            window.localStorage.setItem('token', token)
             console.log(response?.data);
             console.log(response?.accessToken);
             console.log(JSON.stringify(response))
             setSuccess(true);
             //clear state and controlled inputs
             //need value attrib on inputs for this
+            setName('');
+            setNickName('');
             setEmail('');
             setPassword('');
             setMatchPwd('');
@@ -120,7 +124,7 @@ function Register () {
         <>
             {success ? (
                 <section>
-                    <h1>로그인 성공!</h1>
+                    <h1>회원가입 완료</h1>
                     <p>
                         <a href="/loginpost">Sign In</a>
                     </p>
@@ -129,7 +133,30 @@ function Register () {
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
+                    
                     <form onSubmit={handleSubmit}>
+                        <label htmlFor="username">
+                          name:
+                        </label>
+                        <input
+                            type="text"
+                            id="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        />
+                        <label htmlFor="nickname">
+                          nickname:
+                        </label>
+                        <input
+                            type="text"
+                            id="nickname"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setNickName(e.target.value)}
+                            value={nickname}
+                        />
                         <label htmlFor="Email">
                             Email:
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
